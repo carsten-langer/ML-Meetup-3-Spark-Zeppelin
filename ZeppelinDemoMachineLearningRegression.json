@@ -1,0 +1,1405 @@
+{
+  "angularObjects": {
+    "2CMUFJJY4:shared_process": [],
+    "2CNESTB3J:shared_process": [],
+    "2CNV1XAFB:shared_process": [],
+    "2CP1T7GX6:shared_process": [],
+    "2CP66QEKA:shared_process": [],
+    "2CPKQCSCQ:shared_process": [],
+    "2CPMXTW3W:shared_process": [],
+    "2CPTM71NG:shared_process": [],
+    "2CPYAK6TJ:shared_process": [],
+    "2CPZBV6HM:shared_process": [],
+    "2CQ84BAGP:shared_process": [],
+    "2CQDK9YG4:shared_process": [],
+    "2CQFVJRTG:shared_process": [],
+    "2CQJQBXJR:shared_process": [],
+    "2CQPKGXQB:shared_process": [],
+    "2CQVKQU6W:shared_process": [],
+    "2CQWMQ9YY:shared_process": [],
+    "2CRERXDYV:shared_process": [],
+    "2CRNA25BG:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "id": "2CNXYB4YW",
+  "info": {},
+  "name": "ZeppelinDemoMachineLearningRegression",
+  "paragraphs": [
+    {
+      "$$hashKey": "object:1614",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "results": {},
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:38:45+0000",
+      "dateFinished": "2017-07-24T11:46:11+0000",
+      "dateStarted": "2017-07-24T11:46:11+0000",
+      "dateUpdated": "2017-07-24T11:46:11+0000",
+      "focus": true,
+      "id": "20170724-103845_182431680",
+      "jobName": "paragraph_1500892725024_-2011841243",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p>This <a href=\"http://zeppelin.apache.org/\">Apache Zeppelin</a> notebook is the discussion basis of the <a href=\"https://www.meetup.com/de-DE/Dusseldorf-Machine-Learning-Group/events/241840720/\">3rd meeting of the Düsseldorf Machine Learning Group</a>. It demonstrates machine learning using <a href=\"http://spark.apache.org/\">Apache Spark</a>.</p>\n<p>During the meetup, we use a Vagrant box to run Zeppelin and thus Spark. If you do the same, then you should have access to this Zeppelin instance via <a href=\"http://localhost:8080\">http://localhost:8080</a>. Once the Spark driver is started, you would then have access to its GUI on <a href=\"http://localhost:4040\">http://localhost:4040</a>.</p>\n<p>This notebook uses a single dataset input file &ldquo;diamonds.csv&rdquo;, which is often used in statistics. Due to the way how the data is loaded, the notebook assumes you use Apache Spark in local mode, e.g. using Spark which comes bundled with Zeppelin, executing everything on the driver. If you want to run this notebook on a Spark cluster, you should move the dataset file to a distributed datasource.</p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\nThis [Apache Zeppelin](http://zeppelin.apache.org/) notebook is the discussion basis of the [3rd meeting of the Düsseldorf Machine Learning Group](https://www.meetup.com/de-DE/Dusseldorf-Machine-Learning-Group/events/241840720/). It demonstrates machine learning using [Apache Spark](http://spark.apache.org/).\n\nDuring the meetup, we use a Vagrant box to run Zeppelin and thus Spark. If you do the same, then you should have access to this Zeppelin instance via <http://localhost:8080>. Once the Spark driver is started, you would then have access to its GUI on <http://localhost:4040>.\n\nThis notebook uses a single dataset input file \"diamonds.csv\", which is often used in statistics. Due to the way how the data is loaded, the notebook assumes you use Apache Spark in local mode, e.g. using Spark which comes bundled with Zeppelin, executing everything on the driver. If you want to run this notebook on a Spark cluster, you should move the dataset file to a distributed datasource.",
+      "title": "Notebook Purpose",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:161",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:11:46+0000",
+      "dateStarted": "2017-07-24T11:11:46+0000",
+      "dateUpdated": "2017-07-24T11:11:46+0000",
+      "focus": true,
+      "id": "20170529-131835_1872092383",
+      "jobName": "paragraph_1500891792709_1278658354",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p><strong>Data</strong>: A collection of 53,940 records of diamonds price and their associated properties.</p>\n<p><strong>Objective</strong>: Try to learn from the available data about the relationship between properties of a diamond and its market price. Finally, a machine learning model is learned and can be used to predict a price for a diamond based on its properties. </p>\n<p>Properties of a diamond in the sample dataset are as following:</p>\n<ul>\n  <li>Carat: Weight of the diamond (0.2 - 5.01)</li>\n  <li>Cut: Quality of the cut (Fair, Good, Very Good, Premium, Ideal)</li>\n  <li>Color: Diamond colour, from J (worst) to D (best)</li>\n  <li>Clarity: A measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))</li>\n  <li>Total_depth: Total depth percentage = 2 * <em>depth</em> / (*length* + <em>width</em>) (43 - 79)</li>\n  <li>Table: Width of top of diamond relative to widest point (43 - 95)</li>\n  <li>Length: in mm (0 - 10.74)</li>\n  <li>Width: in mm (0 - 58.9)</li>\n  <li>Depth: in mm (0 - 31.8)</li>\n</ul>\n<p><strong>Output</strong>: Demonstrate a complete machine model learning pipeline and evaluate the quality of the learned model on unseen data examples.</p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\n**Data**: A collection of 53,940 records of diamonds price and their associated properties.\n\n**Objective**: Try to learn from the available data about the relationship between properties of a diamond and its market price. Finally, a machine learning model is learned and can be used to predict a price for a diamond based on its properties. \n\nProperties of a diamond in the sample dataset are as following:\n\n* Carat: Weight of the diamond (0.2 - 5.01)   \n* Cut: Quality of the cut (Fair, Good, Very Good, Premium, Ideal)      \n* Color: Diamond colour, from J (worst) to D (best)\n* Clarity: A measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))    \n* Total_depth: Total depth percentage = 2 * *depth* / (*length* + *width*) (43 - 79)\n* Table: Width of top of diamond relative to widest point (43 - 95)\n* Length: in mm (0 - 10.74)   \n* Width: in mm (0 - 58.9)    \n* Depth: in mm (0 - 31.8)   \n\n**Output**: Demonstrate a complete machine model learning pipeline and evaluate the quality of the learned model on unseen data examples. ",
+      "title": "Machine Learning - Regression Model on AVA Demo",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:162",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:12:06+0000",
+      "dateStarted": "2017-07-24T11:12:06+0000",
+      "dateUpdated": "2017-07-24T11:12:06+0000",
+      "id": "20170613-101421_323644332",
+      "jobName": "paragraph_1500891792713_1277119358",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p>Typically, one should be clear about the type of machine learning modelling that one wants to use. These are three main types of machine learning modelling tasks:</p>\n<ul>\n  <li><strong>Classification</strong>: Predicting an outcome that is a categorical/discrete value that always comes from a known list of possible values. For example, [TRUE, FALSE], [rain, sunny, snow] or [very good, good, bad].</li>\n  <li><strong>Regression</strong>: Predicting an outcome that is a numeric value and there is no known possible values. For example: [1,2,3,4,&hellip;], [1.24, 2.43, 5.123, 6.23, &hellip;] or [200, 322, 523, &hellip;].</li>\n  <li><strong>Clustering</strong>: Grouping data examples into a number of clusters/segments. Data examples in a same cluster/segment should have some kinds of similarity realised from their features.</li>\n</ul>\n<p>In this demo, we create a machine learning <strong>regression</strong> model that can predict a price of a diamond based on its carat, total-depth, table, length, width, depth, color, cut and clarity.</p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\nTypically, one should be clear about the type of machine learning modelling that one wants to use. These are three main types of machine learning modelling tasks:\n\n* **Classification**: Predicting an outcome that is a categorical/discrete value that always comes from a known list of possible values. For example, [TRUE, FALSE], [rain, sunny, snow] or [very good, good, bad].\n* **Regression**: Predicting an outcome that is a numeric value and there is no known possible values. For example: [1,2,3,4,...], [1.24, 2.43, 5.123, 6.23, ...] or [200, 322, 523, ...].\n* **Clustering**: Grouping data examples into a number of clusters/segments. Data examples in a same cluster/segment should have some kinds of similarity realised from their features.\n\nIn this demo, we create a machine learning **regression** model that can predict a price of a diamond based on its carat, total-depth, table, length, width, depth, color, cut and clarity.",
+      "title": "Types of Machine Learning modelling",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:163",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:12:28+0000",
+      "dateStarted": "2017-07-24T11:12:27+0000",
+      "dateUpdated": "2017-07-24T11:12:27+0000",
+      "id": "20170529-132700_517495434",
+      "jobName": "paragraph_1500891792713_1277119358",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\ndata: org.apache.spark.sql.DataFrame = [_c0: int, carat: double ... 9 more fields]\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\n/** Normally you will use spark.read... to read from a distributed data source. spark.read supports any datasource which supports the HDFS-style access pattern\n *  for accessing multiple objects in parallel in a distributed manner. This includes HDFS and S3.\n *  Accessing a single Web server via HTTP is not supported, so you cannot use spark.read to download a single file from a HTTP-URL.\n *  The local file system is a supported data source, but may work differently than what you might expect.\n *  spark.read will read the data in a distributed manner, i.e. each Spark executor will read some objects or part of the objects in parallel.\n *  When using the local file system as datasource, this means that each file must be present at each executor's local file system. This does not scale.\n *  However, we assume that we use Spark in local mode, e.g. using the Spark which is bundled with Zeppelin. Then everything is executed on the Spark driver itself.\n *  This means that spark.read only requires local files to be present on the filesystem of the driver itself. This is ideal for the purpose of this demo.\n *  We further assume that this Zeppelin runs inside the Vagrant box that is discussed during the meetup, thus the file is available at \"/vagrant/diamonds.csv\".\n */\n\n/** In most cases, Spark should be able to automatically recognise correct data type for each column/feature from csv files.\n *  However, this property can also be specified by the user as well.\n */\nval data = spark.read\n    .option(\"header\", true)\n    .option(\"delimiter\", \",\")\n    .option(\"inferSchema\", true)\n    .csv(\"file:///vagrant/diamonds.csv\")\n\n/** You can find more information about Spark Dataset and DataFrame in:\n *  https://spark.apache.org/docs/latest/sql-programming-guide.html\n */",
+      "title": "Loading csv data ",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:164",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 230,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:12:32+0000",
+      "dateStarted": "2017-07-24T11:12:32+0000",
+      "dateUpdated": "2017-07-24T11:12:32+0000",
+      "id": "20170530-154234_1252690128",
+      "jobName": "paragraph_1500891792715_1277888856",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- _c0: integer (nullable = true)\n |-- carat: double (nullable = true)\n |-- cut: string (nullable = true)\n |-- color: string (nullable = true)\n |-- clarity: string (nullable = true)\n |-- total_depth: double (nullable = true)\n |-- table: double (nullable = true)\n |-- length: double (nullable = true)\n |-- width: double (nullable = true)\n |-- depth: double (nullable = true)\n |-- price: integer (nullable = true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark \ndata.printSchema()",
+      "title": "Data schema inspection",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:165",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:12:41+0000",
+      "dateStarted": "2017-07-24T11:12:40+0000",
+      "dateUpdated": "2017-07-24T11:12:40+0000",
+      "id": "20170530-080942_1727441527",
+      "jobName": "paragraph_1500891792715_1277888856",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+-----+---------+-----+-------+-----------+-----+------+-----+-----+-----+\n|  _c0|carat|      cut|color|clarity|total_depth|table|length|width|depth|price|\n+-----+-----+---------+-----+-------+-----------+-----+------+-----+-----+-----+\n|47006| 0.51|  Premium|    D|    VS2|       61.9| 58.0|  5.19| 5.12| 3.19| 1818|\n|43710| 0.59|  Premium|    G|    SI1|       60.5| 59.0|  5.44| 5.41| 3.28| 1437|\n|42152|  0.5|    Ideal|    I|    VS1|       62.2| 55.0|  5.07| 5.11| 3.16| 1282|\n|23798|  1.5|  Premium|    H|   VVS2|       62.9| 59.0|  7.31| 7.26| 4.58|11855|\n|19168| 1.08|    Ideal|    F|    VS2|       61.0| 57.0|  6.68| 6.61| 4.06| 7923|\n|49220|  0.5|  Premium|    F|   VVS1|       61.1| 55.0|  5.15| 5.13| 3.14| 2081|\n|50495|  0.7|  Premium|    F|    SI1|       61.8| 59.0|  5.76| 5.67| 3.53| 2268|\n|41139|  0.5|     Good|    G|    SI1|       63.9| 57.0|  5.02| 5.06| 3.22| 1197|\n|17883| 1.33|    Ideal|    H|    SI1|       62.7| 56.0|  7.04| 6.99|  4.4| 7217|\n|48688| 0.77|     Good|    E|    SI2|       64.1| 56.0|  5.84| 5.77| 3.72| 2005|\n|28727| 0.31|Very Good|    E|    VS2|       62.8| 57.0|  4.33| 4.37| 2.73|  680|\n|23377| 0.33|    Ideal|    G|    SI1|       61.4| 57.0|  4.48| 4.45| 2.74|  631|\n| 5520|  1.0|Very Good|    H|    SI2|       60.2| 61.0|  6.44| 6.48| 3.89| 3850|\n|50084| 0.76|Very Good|    J|    VS2|       61.2| 57.0|  5.86| 5.91|  3.6| 2206|\n|  142| 0.71|  Premium|    G|    VS2|       59.8| 56.0|  5.89| 5.81|  3.5| 2766|\n|42607| 0.32|Very Good|    I|    VS1|       59.8| 60.0|  4.44| 4.46| 2.66|  505|\n|22197| 1.61|    Ideal|    I|    SI1|       62.4| 55.0|  7.49| 7.52| 4.68|10236|\n|20097| 1.26|    Ideal|    E|    SI1|       61.5| 59.0|  6.92| 6.96| 4.27| 8574|\n|46743| 0.72|     Fair|    H|    SI2|       66.0| 60.0|  5.58| 5.51| 3.66| 1799|\n|11836|  1.0|  Premium|    D|    SI1|       62.2| 58.0|  6.28| 6.23| 3.89| 5096|\n+-----+-----+---------+-----+-------+-----------+-----+------+-----+-----+-----+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark \ndata.show()",
+      "title": "Show some sample rows from loaded data",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:1869",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T11:11:31+0000",
+      "dateFinished": "2017-07-24T11:13:43+0000",
+      "dateStarted": "2017-07-24T11:13:43+0000",
+      "dateUpdated": "2017-07-24T11:13:43+0000",
+      "focus": true,
+      "id": "20170724-111131_1871718146",
+      "jobName": "paragraph_1500894691973_-1335016498",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "_c0\tcarat\tcut\tcolor\tclarity\ttotal_depth\ttable\tlength\twidth\tdepth\tprice\n47006\t0.51\tPremium\tD\tVS2\t61.9\t58.0\t5.19\t5.12\t3.19\t1818\n43710\t0.59\tPremium\tG\tSI1\t60.5\t59.0\t5.44\t5.41\t3.28\t1437\n42152\t0.5\tIdeal\tI\tVS1\t62.2\t55.0\t5.07\t5.11\t3.16\t1282\n23798\t1.5\tPremium\tH\tVVS2\t62.9\t59.0\t7.31\t7.26\t4.58\t11855\n19168\t1.08\tIdeal\tF\tVS2\t61.0\t57.0\t6.68\t6.61\t4.06\t7923\n49220\t0.5\tPremium\tF\tVVS1\t61.1\t55.0\t5.15\t5.13\t3.14\t2081\n50495\t0.7\tPremium\tF\tSI1\t61.8\t59.0\t5.76\t5.67\t3.53\t2268\n41139\t0.5\tGood\tG\tSI1\t63.9\t57.0\t5.02\t5.06\t3.22\t1197\n17883\t1.33\tIdeal\tH\tSI1\t62.7\t56.0\t7.04\t6.99\t4.4\t7217\n48688\t0.77\tGood\tE\tSI2\t64.1\t56.0\t5.84\t5.77\t3.72\t2005\n28727\t0.31\tVery Good\tE\tVS2\t62.8\t57.0\t4.33\t4.37\t2.73\t680\n23377\t0.33\tIdeal\tG\tSI1\t61.4\t57.0\t4.48\t4.45\t2.74\t631\n5520\t1.0\tVery Good\tH\tSI2\t60.2\t61.0\t6.44\t6.48\t3.89\t3850\n50084\t0.76\tVery Good\tJ\tVS2\t61.2\t57.0\t5.86\t5.91\t3.6\t2206\n142\t0.71\tPremium\tG\tVS2\t59.8\t56.0\t5.89\t5.81\t3.5\t2766\n42607\t0.32\tVery Good\tI\tVS1\t59.8\t60.0\t4.44\t4.46\t2.66\t505\n22197\t1.61\tIdeal\tI\tSI1\t62.4\t55.0\t7.49\t7.52\t4.68\t10236\n20097\t1.26\tIdeal\tE\tSI1\t61.5\t59.0\t6.92\t6.96\t4.27\t8574\n46743\t0.72\tFair\tH\tSI2\t66.0\t60.0\t5.58\t5.51\t3.66\t1799\n11836\t1.0\tPremium\tD\tSI1\t62.2\t58.0\t6.28\t6.23\t3.89\t5096\n<!--TABLE_COMMENT-->\n<font color=red>Results are limited by 20.</font>",
+            "type": "TABLE"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\nz.show(data, 20)",
+      "title": "Show same sample rows, but with Zeppelin's nice formatting",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:166",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:47:50+0000",
+      "dateStarted": "2017-07-24T11:47:50+0000",
+      "dateUpdated": "2017-07-24T11:47:50+0000",
+      "id": "20170529-134459_576651338",
+      "jobName": "paragraph_1500891792715_1277888856",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p><strong>Overview</strong><br/>In machine learning, each record/item is represented by a set of features. For example, in this demo, each column represents a feature and we have ten features that are associated with a diamond record/row such as carat, price, length. Selecting informative, discriminating and independent features is an important step to creating a good and reliable machine learning model.</p>\n<p>Typically, we see two types of feature:</p>\n<ul>\n  <li>\n  <p><strong>Numeric Feature:</strong> Values from a numeric feature represent measurements and the possible values cannot be counted or known exactly. For example, 0 - 150 is a reasonable and sensible range for a human age and a valid value should be in the interval between 0 and 150. However, we cannot put a cap on how old a person could be in the past or the future. Counters, sensor measurements, weights and velocity are some examples that we should treat as numeric features.</p></li>\n  <li>\n  <p><strong>Discrete/Categorical Feature</strong>: For such feature there is a fixed list of possible values that can be associated with a record. For example, &ldquo;cut&rdquo; in the Diamonds dataset is a categorical feature because each record can be one of the values from a list of pre-defined values for cut such as fair, good, very good, premium, ideal and no other value is possible.</p></li>\n</ul>\n<p>Further Reading:</p>\n<p><a href=\"https://spark.apache.org/docs/latest/ml-features.html\">https://spark.apache.org/docs/latest/ml-features.html</a><br/><a href=\"https://en.wikipedia.org/wiki/Feature_(machine_learning)\">https://en.wikipedia.org/wiki/Feature_(machine_learning)</a><br/><a href=\"http://www.dummies.com/education/math/statistics/types-of-statistical-data-numerical-categorical-and-ordinal\">http://www.dummies.com/education/math/statistics/types-of-statistical-data-numerical-categorical-and-ordinal</a></p>\n<p><strong>Feature Transformation</strong></p>\n<p>Generally, we need to prepare our data and transform the data features into a form that can be used to create a machine learning model. In other words, most raw data sources are not ready to use for creating a machine learning model and feature transformation is one of the key tasks in a machine learning pipeline. There are built-in transformers that we can use out of the box within AVA as part of the Spark Machine Learning programming libraries.</p>\n<p>Some example feature transformers that are available from Spark:</p>\n<ul>\n  <li>Principal Component Analysis (PCA)</li>\n  <li>String Indexing</li>\n  <li>Index to String</li>\n  <li>One-hot Encoding</li>\n  <li>Vector Assembler</li>\n  <li>&hellip;</li>\n</ul>\n<p>More information about these transformers and their properties can be found in further reading links below.</p>\n<p>Further Reading:</p>\n<p><a href=\"https://spark.apache.org/docs/latest/ml-features.html#feature-transformers\">https://spark.apache.org/docs/latest/ml-features.html#feature-transformers</a><br/><a href=\"http://docs.aws.amazon.com/machine-learning/latest/dg/importance-of-feature-transformation.html\">http://docs.aws.amazon.com/machine-learning/latest/dg/importance-of-feature-transformation.html</a><br/><a href=\"http://en.wikipedia.org/wiki/Principal_component_analysis\">http://en.wikipedia.org/wiki/Principal_component_analysis</a><br/><a href=\"http://en.wikipedia.org/wiki/One-hot\">http://en.wikipedia.org/wiki/One-hot</a></p>\n<p><strong>Pipelines, Transformers, Estimators</strong></p>\n<p>See <a href=\"https://spark.apache.org/docs/latest/ml-pipeline.html\">https://spark.apache.org/docs/latest/ml-pipeline.html</a>.</p>\n<p>In machine learning, it is common to run a sequence of algorithms to process and learn from data. For example, a simple machine learning regression workflow might include several stages:</p>\n<ul>\n  <li>Convert columns with categorical features into columns with numerical feature vectors.</li>\n  <li>Learn a prediction model on a training data set using the feature vectors and the label (the to-be-predicted value).</li>\n  <li>Predict the label on a test data set to evaluate the quality of the model.</li>\n</ul>\n<p>Spark&rsquo;s machine learning library <em>MLlib</em> represents such a workflow as a <em>Pipeline</em>, which consists of a sequence of <em>PipelineStages</em> (_Transformers_ and <em>Estimators</em>) to be run in a specific order. The two possible <em>Pipeline</em> components are:</p>\n<ul>\n  <li>A <em>Transformer</em> is an abstraction that includes feature transformers and learned models. Technically, a <em>Transformer</em> implements a method <code>transform()</code>, which converts one DataFrame into another, generally by appending one or more columns. For example:\n    <ul>\n      <li>A feature transformer might take a DataFrame, read a column (e.g. text), map it into a new column (e.g. feature vectors), and output a new DataFrame with the mapped column appended.</li>\n      <li>A learned model might take a DataFrame, read the column containing feature vectors, predict the label for each feature vector, and output a new DataFrame with the predicted label appended as a column.</li>\n    </ul>\n  </li>\n  <li>An <em>Estimator</em> abstracts the concept of a learning algorithm or any algorithm that fits or trains on data. Technically, an <em>Estimator</em> implements a method <code>fit()</code>, which accepts a DataFrame and produces a <em>Model</em>, which is a <em>Transformer</em>. For example, a learning algorithm such as LogisticRegression is an <em>Estimator</em>, and calling <code>fit()</code> trains a LogisticRegressionModel, which is a <em>Model</em> and hence a <em>Transformer</em>.</li>\n</ul>\n<p>A <em>Pipeline</em> combines <em>Transformers</em> and <em>Estimators</em> to execute in a specified order.</p>\n<p>Some feature transformers are pure transformers, like <a href=\"https://spark.apache.org/docs/latest/ml-features.html#normalizer\">Normalizer</a>, and can be executed directly. Many feature transformers actually are learning models themselves which first learn from the data set given how best to transform the features, thus they provide a <em>Model</em>, which is the <em>Transformer</em> to be applied on the data set to transform the feature, e.g. <a href=\"https://spark.apache.org/docs/latest/ml-features.html#stringindexer\">StringIndexer</a>. Such feature transformations are therefore also executed in a pipeline.</p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\n**Overview**\nIn machine learning, each record/item is represented by a set of features. For example, in this demo, each column represents a feature and we have ten features that are associated with a diamond record/row such as carat, price, length. Selecting informative, discriminating  and independent features is an important step to creating a good and reliable machine learning model.\n\nTypically, we see two types of feature:\n\n* **Numeric Feature:** Values from a numeric feature represent measurements and the possible values cannot be counted or known exactly. For example, 0 - 150 is a reasonable and sensible range for a human age and a valid value should be in the interval between 0 and 150. However, we cannot put a cap on how old a person could be in the past or the future. Counters, sensor measurements, weights and velocity are some examples that we should treat as numeric features.\n\n* **Discrete/Categorical Feature**: For such feature there is a fixed list of possible values that can be associated with a record. For example, \"cut\" in the Diamonds dataset is a categorical feature because each record can be one of the values from a list of pre-defined values for cut such as fair, good, very good, premium,  ideal and no other value is possible.\n\nFurther Reading:\n\n<https://spark.apache.org/docs/latest/ml-features.html>\n<https://en.wikipedia.org/wiki/Feature_(machine_learning)>\n<http://www.dummies.com/education/math/statistics/types-of-statistical-data-numerical-categorical-and-ordinal>\n\n**Feature Transformation**\n\nGenerally, we need to prepare our data and transform the data features into a form that can be used to create a machine learning model. In other words, most raw data sources are not ready to use for creating a machine learning model and feature transformation is one of the key tasks in a machine learning pipeline. There are built-in transformers that we can use out of the box within AVA as part of the Spark Machine Learning programming libraries.\n\nSome example feature transformers that are available from Spark:\n\n* Principal Component Analysis (PCA)\n* String Indexing\n* Index to String\n* One-hot Encoding\n* Vector Assembler\n* ...\n\nMore information about these transformers and their properties can be found in further reading links below.\n\nFurther Reading:\n\n<https://spark.apache.org/docs/latest/ml-features.html#feature-transformers>\n<http://docs.aws.amazon.com/machine-learning/latest/dg/importance-of-feature-transformation.html>\n<http://en.wikipedia.org/wiki/Principal_component_analysis>\n<http://en.wikipedia.org/wiki/One-hot>\n\n**Pipelines, Transformers, Estimators**\n\nSee <https://spark.apache.org/docs/latest/ml-pipeline.html>.\n\nIn machine learning, it is common to run a sequence of algorithms to process and learn from data. For example, a simple machine learning regression workflow might include several stages:\n\n* Convert columns with categorical features into columns with numerical feature vectors.\n* Learn a prediction model on a training data set using the feature vectors and the label (the to-be-predicted value).\n* Predict the label on a test data set to evaluate the quality of the model.\n\nSpark's machine learning library _MLlib_ represents such a workflow as a _Pipeline_, which consists of a sequence of _PipelineStages_ (_Transformers_ and _Estimators_) to be run in a specific order. The two possible _Pipeline_ components are:\n\n* A _Transformer_ is an abstraction that includes feature transformers and learned models. Technically, a _Transformer_ implements a method `transform()`, which converts one DataFrame into another, generally by appending one or more columns. For example:\n    * A feature transformer might take a DataFrame, read a column (e.g. text), map it into a new column (e.g. feature vectors), and output a new DataFrame with the mapped column appended.\n    * A learned model might take a DataFrame, read the column containing feature vectors, predict the label for each feature vector, and output a new DataFrame with the predicted label appended as a column.\n* An _Estimator_ abstracts the concept of a learning algorithm or any algorithm that fits or trains on data. Technically, an _Estimator_ implements a method `fit()`, which accepts a DataFrame and produces a _Model_, which is a _Transformer_. For example, a learning algorithm such as LogisticRegression is an _Estimator_, and calling `fit()` trains a LogisticRegressionModel, which is a _Model_ and hence a _Transformer_.\n\nA _Pipeline_ combines _Transformers_ and _Estimators_ to execute in a specified order.\n\nSome feature transformers are pure transformers, like [Normalizer](https://spark.apache.org/docs/latest/ml-features.html#normalizer), and can be executed directly. Many feature transformers actually are learning models themselves which first learn from the data set given how best to transform the features, thus they provide a _Model_, which is the _Transformer_ to be applied on the data set to transform the feature, e.g. [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer). Such feature transformations are therefore also executed in a pipeline.",
+      "title": "Data Features",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:167",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:48:47+0000",
+      "dateStarted": "2017-07-24T11:48:47+0000",
+      "dateUpdated": "2017-07-24T11:48:47+0000",
+      "id": "20170613-103118_1473697384",
+      "jobName": "paragraph_1500891792716_1275965112",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p>A Regression Model can only work on numerical values, i.e. numerical features. So we must convert the categorical features of &ldquo;color&rdquo;, &ldquo;cut&rdquo;, and &ldquo;clarity&rdquo; into numbers. A naive approach would be to assign unique numbers to each of the values, e.g. for the colors <em>D = 1</em>, <em>E = 2</em>, <em>F = 3</em>. While simple, this approach induces an ordering that is not reflected in the semantics of the data. If color <em>D</em> is <em>1</em> and <em>F</em> is <em>3</em>, then <em>3 * D = F</em>. Seems odd? It is.</p>\n<p>There is a better approach, and that is <a href=\"https://en.wikipedia.org/wiki/One-hot\">One-Hot</a> encoding. With One-Hot encoding, the original categorical feature is split into new columns, one for each value. Each column holds a <em>1.0</em> if the original attribute has the respective value, and <em>0.0</em> otherwise.</p>\n<p>Example:</p>\n<pre><code>| # | Color |        | # | Color=D | Color=E | Color=F |\n|---|-------|        |---|---------|---------|---------|\n| 1 | D     |   =&gt;   | 1 | 1.0     | 0.0     | 0.0     | \n| 2 | F     |        | 2 | 0.0     | 0.0     | 1.0     |\n| 3 | E     |        | 3 | 0.0     | 1.0     | 0.0     |\n</code></pre>\n<p>Spark provides such One-Hot transformer. However, it cannot work directly on string values, but only on numerical values. So the first step is to convert the categorical string values into numerical index values (even though there is no semantic meaning in the index values themselves), and then convert each numerical index value into a One-Hot-numerical feature vector.</p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\nA Regression Model can only work on numerical values, i.e. numerical features. So we must convert the categorical features of \"color\", \"cut\", and \"clarity\" into numbers. A naive approach would be to assign unique numbers to each of the values, e.g. for the colors _D = 1_, _E = 2_, _F = 3_. While simple, this approach induces an ordering that is not reflected in the semantics of the data. If color _D_ is _1_ and _F_ is _3_, then _3 * D = F_. Seems odd? It is.\n\nThere is a better approach, and that is [One-Hot](https://en.wikipedia.org/wiki/One-hot) encoding. With One-Hot encoding, the original categorical feature is split into new columns, one for each value. Each column holds a _1.0_ if the original attribute has the respective value, and _0.0_ otherwise.\n\nExample:\n\n```\n| # | Color |        | # | Color=D | Color=E | Color=F |\n|---|-------|        |---|---------|---------|---------|\n| 1 | D     |   =>   | 1 | 1.0     | 0.0     | 0.0     | \n| 2 | F     |        | 2 | 0.0     | 0.0     | 1.0     |\n| 3 | E     |        | 3 | 0.0     | 1.0     | 0.0     |\n```\n\n\n\nSpark provides such One-Hot transformer. However, it cannot work directly on string values, but only on numerical values. So the first step is to convert the categorical string values into numerical index values (even though there is no semantic meaning in the index values themselves), and then convert each numerical index value into a One-Hot-numerical feature vector.\n\n",
+      "title": "Needed Feature Transformations for Regression Model",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:168",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:32:08+0000",
+      "dateStarted": "2017-07-24T11:32:06+0000",
+      "dateUpdated": "2017-07-24T11:32:06+0000",
+      "id": "20170529-135411_315063249",
+      "jobName": "paragraph_1500891792717_1275580363",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\nimport org.apache.spark.ml.feature.StringIndexer\n\nimport org.apache.spark.ml.{Pipeline, PipelineModel}\n\ncolorIndexer: org.apache.spark.ml.feature.StringIndexer = strIdx_869e308f70f7\n\ncutIndexer: org.apache.spark.ml.feature.StringIndexer = strIdx_711f41ae9078\n\nclarityIndexer: org.apache.spark.ml.feature.StringIndexer = strIdx_119196f3ddd5\n\nfeaturesIndexed: org.apache.spark.sql.DataFrame = [_c0: int, carat: double ... 12 more fields]\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\nimport org.apache.spark.ml.feature.StringIndexer\nimport org.apache.spark.ml.{Pipeline, PipelineModel}\n\n/** Preparing indexer for applicable features */\nval colorIndexer = new StringIndexer()\n                        .setInputCol(\"color\")\n                        .setOutputCol(\"colorIndex\")\n\nval cutIndexer = new StringIndexer()\n                        .setInputCol(\"cut\")\n                        .setOutputCol(\"cutIndex\")\n\nval clarityIndexer = new StringIndexer()\n                        .setInputCol(\"clarity\")\n                        .setOutputCol(\"clarityIndex\")\n\n/** Pipeline of transformers and excecute the transformation on input data */\nval featuresIndexed = new Pipeline()\n                        .setStages(Array(colorIndexer, cutIndexer, clarityIndexer))\n                        .fit(data)\n                        .transform(data)\n\n/** More information about string indexing:\n *  https://spark.apache.org/docs/latest/ml-features.html#stringindexer\n */",
+      "title": "Transformation: String indexing categorical features",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:169",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:35:30+0000",
+      "dateStarted": "2017-07-24T11:35:30+0000",
+      "dateUpdated": "2017-07-24T11:35:30+0000",
+      "id": "20170530-075941_298943328",
+      "jobName": "paragraph_1500891792717_1275580363",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+---------+-------+\n|color|      cut|clarity|\n+-----+---------+-------+\n|    D|  Premium|    VS2|\n|    G|  Premium|    SI1|\n|    I|    Ideal|    VS1|\n|    H|  Premium|   VVS2|\n|    F|    Ideal|    VS2|\n|    F|  Premium|   VVS1|\n|    F|  Premium|    SI1|\n|    G|     Good|    SI1|\n|    H|    Ideal|    SI1|\n|    E|     Good|    SI2|\n|    E|Very Good|    VS2|\n|    G|    Ideal|    SI1|\n|    H|Very Good|    SI2|\n|    J|Very Good|    VS2|\n|    G|  Premium|    VS2|\n|    I|Very Good|    VS1|\n|    I|    Ideal|    SI1|\n|    E|    Ideal|    SI1|\n|    H|     Fair|    SI2|\n|    D|  Premium|    SI1|\n+-----+---------+-------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\n/** original input data */\ndata\n    .select('color, 'cut, 'clarity)\n    .show()",
+      "title": "[Before] String indexing",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:170",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:35:28+0000",
+      "dateStarted": "2017-07-24T11:35:28+0000",
+      "dateUpdated": "2017-07-24T11:35:28+0000",
+      "id": "20170530-080001_1888196773",
+      "jobName": "paragraph_1500891792721_1286353332",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+---------+-------+----------+--------+------------+\n|color|      cut|clarity|colorIndex|cutIndex|clarityIndex|\n+-----+---------+-------+----------+--------+------------+\n|    D|  Premium|    VS2|       4.0|     1.0|         1.0|\n|    G|  Premium|    SI1|       0.0|     1.0|         0.0|\n|    I|    Ideal|    VS1|       5.0|     0.0|         3.0|\n|    H|  Premium|   VVS2|       3.0|     1.0|         4.0|\n|    F|    Ideal|    VS2|       2.0|     0.0|         1.0|\n|    F|  Premium|   VVS1|       2.0|     1.0|         5.0|\n|    F|  Premium|    SI1|       2.0|     1.0|         0.0|\n|    G|     Good|    SI1|       0.0|     3.0|         0.0|\n|    H|    Ideal|    SI1|       3.0|     0.0|         0.0|\n|    E|     Good|    SI2|       1.0|     3.0|         2.0|\n|    E|Very Good|    VS2|       1.0|     2.0|         1.0|\n|    G|    Ideal|    SI1|       0.0|     0.0|         0.0|\n|    H|Very Good|    SI2|       3.0|     2.0|         2.0|\n|    J|Very Good|    VS2|       6.0|     2.0|         1.0|\n|    G|  Premium|    VS2|       0.0|     1.0|         1.0|\n|    I|Very Good|    VS1|       5.0|     2.0|         3.0|\n|    I|    Ideal|    SI1|       5.0|     0.0|         0.0|\n|    E|    Ideal|    SI1|       1.0|     0.0|         0.0|\n|    H|     Fair|    SI2|       3.0|     4.0|         2.0|\n|    D|  Premium|    SI1|       4.0|     1.0|         0.0|\n+-----+---------+-------+----------+--------+------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\n/** features indexed columns */\nfeaturesIndexed\n    .select('color, 'cut, 'clarity, 'colorIndex, 'cutIndex, 'clarityIndex)\n    .show()",
+      "title": "[After] String indexing",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:171",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:34:42+0000",
+      "dateStarted": "2017-07-24T11:34:41+0000",
+      "dateUpdated": "2017-07-24T11:34:41+0000",
+      "id": "20170530-034955_262110740",
+      "jobName": "paragraph_1500891792723_1287122830",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\nimport org.apache.spark.ml.feature._\n\ncolorEncoder: org.apache.spark.ml.feature.OneHotEncoder = oneHot_2bd69b6fac95\n\ncutEncoder: org.apache.spark.ml.feature.OneHotEncoder = oneHot_7b06cc56ff53\n\nclarityEncoder: org.apache.spark.ml.feature.OneHotEncoder = oneHot_780cbefc1e24\n\nencodedData: org.apache.spark.sql.DataFrame = [_c0: int, carat: double ... 15 more fields]\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\nimport org.apache.spark.ml.feature._\n\n/** preparing enconder for applicable features */\nval colorEncoder = new OneHotEncoder()\n                    .setInputCol(\"colorIndex\")\n                    .setOutputCol(\"colorVec\")\n\nval cutEncoder = new OneHotEncoder()\n                    .setInputCol(\"cutIndex\")\n                    .setOutputCol(\"cutVec\")\n\nval clarityEncoder = new OneHotEncoder()\n                    .setInputCol(\"clarityIndex\")\n                    .setOutputCol(\"clarityVec\")\n\n/** pipeline of transformers and excecute the transformation on input data */\nval encodedData = new Pipeline()\n                    .setStages(Array(colorEncoder, cutEncoder, clarityEncoder))\n                    .fit(featuresIndexed)\n                    .transform(featuresIndexed)\n\n/** More information about one-hot encoding:\n *  https://spark.apache.org/docs/latest/ml-features.html#onehotencoder\n *  https://en.wikipedia.org/wiki/One-hot\n */",
+      "title": "Transformation: One hot encoding indexed categorical features",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:172",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:34:54+0000",
+      "dateStarted": "2017-07-24T11:34:54+0000",
+      "dateUpdated": "2017-07-24T11:34:54+0000",
+      "id": "20170530-152022_1768699504",
+      "jobName": "paragraph_1500891792724_1285199085",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+---------+-------+----------+--------+------------+\n|color|      cut|clarity|colorIndex|cutIndex|clarityIndex|\n+-----+---------+-------+----------+--------+------------+\n|    D|  Premium|    VS2|       4.0|     1.0|         1.0|\n|    G|  Premium|    SI1|       0.0|     1.0|         0.0|\n|    I|    Ideal|    VS1|       5.0|     0.0|         3.0|\n|    H|  Premium|   VVS2|       3.0|     1.0|         4.0|\n|    F|    Ideal|    VS2|       2.0|     0.0|         1.0|\n|    F|  Premium|   VVS1|       2.0|     1.0|         5.0|\n|    F|  Premium|    SI1|       2.0|     1.0|         0.0|\n|    G|     Good|    SI1|       0.0|     3.0|         0.0|\n|    H|    Ideal|    SI1|       3.0|     0.0|         0.0|\n|    E|     Good|    SI2|       1.0|     3.0|         2.0|\n|    E|Very Good|    VS2|       1.0|     2.0|         1.0|\n|    G|    Ideal|    SI1|       0.0|     0.0|         0.0|\n|    H|Very Good|    SI2|       3.0|     2.0|         2.0|\n|    J|Very Good|    VS2|       6.0|     2.0|         1.0|\n|    G|  Premium|    VS2|       0.0|     1.0|         1.0|\n|    I|Very Good|    VS1|       5.0|     2.0|         3.0|\n|    I|    Ideal|    SI1|       5.0|     0.0|         0.0|\n|    E|    Ideal|    SI1|       1.0|     0.0|         0.0|\n|    H|     Fair|    SI2|       3.0|     4.0|         2.0|\n|    D|  Premium|    SI1|       4.0|     1.0|         0.0|\n+-----+---------+-------+----------+--------+------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark \nfeaturesIndexed\n    .select('color, 'cut, 'clarity, 'colorIndex, 'cutIndex, 'clarityIndex)\n    .show()",
+      "title": "[Before] One hot encoding",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:173",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:36:27+0000",
+      "dateStarted": "2017-07-24T11:36:27+0000",
+      "dateUpdated": "2017-07-24T11:36:27+0000",
+      "id": "20170530-152203_1413166522",
+      "jobName": "paragraph_1500891792724_1285199085",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+---------+-------+----------+--------+------------+-------------+-------------+-------------+\n|color|      cut|clarity|colorIndex|cutIndex|clarityIndex|     colorVec|       cutVec|   clarityVec|\n+-----+---------+-------+----------+--------+------------+-------------+-------------+-------------+\n|    D|  Premium|    VS2|       4.0|     1.0|         1.0|(6,[4],[1.0])|(4,[1],[1.0])|(7,[1],[1.0])|\n|    G|  Premium|    SI1|       0.0|     1.0|         0.0|(6,[0],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n|    I|    Ideal|    VS1|       5.0|     0.0|         3.0|(6,[5],[1.0])|(4,[0],[1.0])|(7,[3],[1.0])|\n|    H|  Premium|   VVS2|       3.0|     1.0|         4.0|(6,[3],[1.0])|(4,[1],[1.0])|(7,[4],[1.0])|\n|    F|    Ideal|    VS2|       2.0|     0.0|         1.0|(6,[2],[1.0])|(4,[0],[1.0])|(7,[1],[1.0])|\n|    F|  Premium|   VVS1|       2.0|     1.0|         5.0|(6,[2],[1.0])|(4,[1],[1.0])|(7,[5],[1.0])|\n|    F|  Premium|    SI1|       2.0|     1.0|         0.0|(6,[2],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n|    G|     Good|    SI1|       0.0|     3.0|         0.0|(6,[0],[1.0])|(4,[3],[1.0])|(7,[0],[1.0])|\n|    H|    Ideal|    SI1|       3.0|     0.0|         0.0|(6,[3],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n|    E|     Good|    SI2|       1.0|     3.0|         2.0|(6,[1],[1.0])|(4,[3],[1.0])|(7,[2],[1.0])|\n|    E|Very Good|    VS2|       1.0|     2.0|         1.0|(6,[1],[1.0])|(4,[2],[1.0])|(7,[1],[1.0])|\n|    G|    Ideal|    SI1|       0.0|     0.0|         0.0|(6,[0],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n|    H|Very Good|    SI2|       3.0|     2.0|         2.0|(6,[3],[1.0])|(4,[2],[1.0])|(7,[2],[1.0])|\n|    J|Very Good|    VS2|       6.0|     2.0|         1.0|    (6,[],[])|(4,[2],[1.0])|(7,[1],[1.0])|\n|    G|  Premium|    VS2|       0.0|     1.0|         1.0|(6,[0],[1.0])|(4,[1],[1.0])|(7,[1],[1.0])|\n|    I|Very Good|    VS1|       5.0|     2.0|         3.0|(6,[5],[1.0])|(4,[2],[1.0])|(7,[3],[1.0])|\n|    I|    Ideal|    SI1|       5.0|     0.0|         0.0|(6,[5],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n|    E|    Ideal|    SI1|       1.0|     0.0|         0.0|(6,[1],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n|    H|     Fair|    SI2|       3.0|     4.0|         2.0|(6,[3],[1.0])|    (4,[],[])|(7,[2],[1.0])|\n|    D|  Premium|    SI1|       4.0|     1.0|         0.0|(6,[4],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n+-----+---------+-------+----------+--------+------------+-------------+-------------+-------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\n/** Spark saves memory by storing sparse vectors in a concise way.\n * \n *  (6,[4],[1.0]) means a vector of \"6\" fields (indices 0 to 5), where field 5 (index \"4\") is filled with value \"1.0\". All other fields have value \"0.0\", i.e. (0.0, 0.0, 0.0, 0.0, 1.0, 0.0).\n * \n *  (6,[],[]) means a vector of \"6\" fields with no field filled, i.e. all fields have a value of \"0.0\". This is due to the one-hot encoder not encoding the last field to avoid linear dependencies, so the interpretation is that in this vector the last field would normally be set to \"1.0\".\n */\nencodedData\n    .select('color, 'cut, 'clarity, 'colorIndex, 'cutIndex, 'clarityIndex, 'colorVec, 'cutVec, 'clarityVec)\n    .show()",
+      "title": "[After] One hot encoding",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:174",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:36:59+0000",
+      "dateStarted": "2017-07-24T11:36:58+0000",
+      "dateUpdated": "2017-07-24T11:37:23+0000",
+      "id": "20170529-164319_2055699835",
+      "jobName": "paragraph_1500891792725_1284814336",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\nimport org.apache.spark.ml.feature.VectorAssembler\n\nassembler: org.apache.spark.ml.feature.VectorAssembler = vecAssembler_2f8d626b8dc5\n\nvectorAssembled: org.apache.spark.sql.DataFrame = [_c0: int, carat: double ... 16 more fields]\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\nimport org.apache.spark.ml.feature.VectorAssembler\n\n/** Features assembler */\nval assembler = new VectorAssembler()\n                .setInputCols(Array(\"carat\", \"total_depth\", \"table\", \"length\", \"width\", \"depth\", \"colorVec\", \"cutVec\", \"clarityVec\"))\n                .setOutputCol(\"features\")\n\nval vectorAssembled = assembler.transform(encodedData)\n\n/** More information about features/vectors assembling in Spark:\n *  https://spark.apache.org/docs/latest/ml-features.html#vectorassembler\n */",
+      "title": "Transformation: Vector assembling all features",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:175",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:37:43+0000",
+      "dateStarted": "2017-07-24T11:37:42+0000",
+      "dateUpdated": "2017-07-24T11:37:42+0000",
+      "id": "20170530-144345_509386355",
+      "jobName": "paragraph_1500891792728_1283660090",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+-----+-----------+-----+------+-----+-----+-------------+-------------+-------------+\n|price|carat|total_depth|table|length|width|depth|     colorVec|       cutVec|   clarityVec|\n+-----+-----+-----------+-----+------+-----+-----+-------------+-------------+-------------+\n| 1818| 0.51|       61.9| 58.0|  5.19| 5.12| 3.19|(6,[4],[1.0])|(4,[1],[1.0])|(7,[1],[1.0])|\n| 1437| 0.59|       60.5| 59.0|  5.44| 5.41| 3.28|(6,[0],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n| 1282|  0.5|       62.2| 55.0|  5.07| 5.11| 3.16|(6,[5],[1.0])|(4,[0],[1.0])|(7,[3],[1.0])|\n|11855|  1.5|       62.9| 59.0|  7.31| 7.26| 4.58|(6,[3],[1.0])|(4,[1],[1.0])|(7,[4],[1.0])|\n| 7923| 1.08|       61.0| 57.0|  6.68| 6.61| 4.06|(6,[2],[1.0])|(4,[0],[1.0])|(7,[1],[1.0])|\n| 2081|  0.5|       61.1| 55.0|  5.15| 5.13| 3.14|(6,[2],[1.0])|(4,[1],[1.0])|(7,[5],[1.0])|\n| 2268|  0.7|       61.8| 59.0|  5.76| 5.67| 3.53|(6,[2],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n| 1197|  0.5|       63.9| 57.0|  5.02| 5.06| 3.22|(6,[0],[1.0])|(4,[3],[1.0])|(7,[0],[1.0])|\n| 7217| 1.33|       62.7| 56.0|  7.04| 6.99|  4.4|(6,[3],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n| 2005| 0.77|       64.1| 56.0|  5.84| 5.77| 3.72|(6,[1],[1.0])|(4,[3],[1.0])|(7,[2],[1.0])|\n|  680| 0.31|       62.8| 57.0|  4.33| 4.37| 2.73|(6,[1],[1.0])|(4,[2],[1.0])|(7,[1],[1.0])|\n|  631| 0.33|       61.4| 57.0|  4.48| 4.45| 2.74|(6,[0],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n| 3850|  1.0|       60.2| 61.0|  6.44| 6.48| 3.89|(6,[3],[1.0])|(4,[2],[1.0])|(7,[2],[1.0])|\n| 2206| 0.76|       61.2| 57.0|  5.86| 5.91|  3.6|    (6,[],[])|(4,[2],[1.0])|(7,[1],[1.0])|\n| 2766| 0.71|       59.8| 56.0|  5.89| 5.81|  3.5|(6,[0],[1.0])|(4,[1],[1.0])|(7,[1],[1.0])|\n|  505| 0.32|       59.8| 60.0|  4.44| 4.46| 2.66|(6,[5],[1.0])|(4,[2],[1.0])|(7,[3],[1.0])|\n|10236| 1.61|       62.4| 55.0|  7.49| 7.52| 4.68|(6,[5],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n| 8574| 1.26|       61.5| 59.0|  6.92| 6.96| 4.27|(6,[1],[1.0])|(4,[0],[1.0])|(7,[0],[1.0])|\n| 1799| 0.72|       66.0| 60.0|  5.58| 5.51| 3.66|(6,[3],[1.0])|    (4,[],[])|(7,[2],[1.0])|\n| 5096|  1.0|       62.2| 58.0|  6.28| 6.23| 3.89|(6,[4],[1.0])|(4,[1],[1.0])|(7,[0],[1.0])|\n+-----+-----+-----------+-----+------+-----+-----+-------------+-------------+-------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\nencodedData\n    .select('price, 'carat, 'total_depth, 'table, 'length, 'width, 'depth, 'colorVec, 'cutVec, 'clarityVec)\n    .show()",
+      "title": "[Before] Vector assembling",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:176",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:39:05+0000",
+      "dateStarted": "2017-07-24T11:39:05+0000",
+      "dateUpdated": "2017-07-24T11:39:05+0000",
+      "id": "20170530-080815_300182540",
+      "jobName": "paragraph_1500891792728_1283660090",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+-----------------------------------------------------------------------+\n|price|features                                                               |\n+-----+-----------------------------------------------------------------------+\n|1818 |(23,[0,1,2,3,4,5,10,13,17],[0.51,61.9,58.0,5.19,5.12,3.19,1.0,1.0,1.0])|\n|1437 |(23,[0,1,2,3,4,5,6,13,16],[0.59,60.5,59.0,5.44,5.41,3.28,1.0,1.0,1.0]) |\n|1282 |(23,[0,1,2,3,4,5,11,12,19],[0.5,62.2,55.0,5.07,5.11,3.16,1.0,1.0,1.0]) |\n|11855|(23,[0,1,2,3,4,5,9,13,20],[1.5,62.9,59.0,7.31,7.26,4.58,1.0,1.0,1.0])  |\n|7923 |(23,[0,1,2,3,4,5,8,12,17],[1.08,61.0,57.0,6.68,6.61,4.06,1.0,1.0,1.0]) |\n|2081 |(23,[0,1,2,3,4,5,8,13,21],[0.5,61.1,55.0,5.15,5.13,3.14,1.0,1.0,1.0])  |\n|2268 |(23,[0,1,2,3,4,5,8,13,16],[0.7,61.8,59.0,5.76,5.67,3.53,1.0,1.0,1.0])  |\n|1197 |(23,[0,1,2,3,4,5,6,15,16],[0.5,63.9,57.0,5.02,5.06,3.22,1.0,1.0,1.0])  |\n|7217 |(23,[0,1,2,3,4,5,9,12,16],[1.33,62.7,56.0,7.04,6.99,4.4,1.0,1.0,1.0])  |\n|2005 |(23,[0,1,2,3,4,5,7,15,18],[0.77,64.1,56.0,5.84,5.77,3.72,1.0,1.0,1.0]) |\n|680  |(23,[0,1,2,3,4,5,7,14,17],[0.31,62.8,57.0,4.33,4.37,2.73,1.0,1.0,1.0]) |\n|631  |(23,[0,1,2,3,4,5,6,12,16],[0.33,61.4,57.0,4.48,4.45,2.74,1.0,1.0,1.0]) |\n|3850 |(23,[0,1,2,3,4,5,9,14,18],[1.0,60.2,61.0,6.44,6.48,3.89,1.0,1.0,1.0])  |\n|2206 |(23,[0,1,2,3,4,5,14,17],[0.76,61.2,57.0,5.86,5.91,3.6,1.0,1.0])        |\n|2766 |(23,[0,1,2,3,4,5,6,13,17],[0.71,59.8,56.0,5.89,5.81,3.5,1.0,1.0,1.0])  |\n|505  |(23,[0,1,2,3,4,5,11,14,19],[0.32,59.8,60.0,4.44,4.46,2.66,1.0,1.0,1.0])|\n|10236|(23,[0,1,2,3,4,5,11,12,16],[1.61,62.4,55.0,7.49,7.52,4.68,1.0,1.0,1.0])|\n|8574 |(23,[0,1,2,3,4,5,7,12,16],[1.26,61.5,59.0,6.92,6.96,4.27,1.0,1.0,1.0]) |\n|1799 |(23,[0,1,2,3,4,5,9,18],[0.72,66.0,60.0,5.58,5.51,3.66,1.0,1.0])        |\n|5096 |(23,[0,1,2,3,4,5,10,13,16],[1.0,62.2,58.0,6.28,6.23,3.89,1.0,1.0,1.0]) |\n+-----+-----------------------------------------------------------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\n/** Spark saves memory by storing sparse vectors in a concise way:\n *  (23,[0,1,2,3,4,5,10,13,17],[0.51,61.9,58.0,5.19,5.12,3.19,1.0,1.0,1.0]) means a vector of \"23\" fields (indices 0 to 22), where fields 1-6 (indices \"0\" to \"5\") and fields 11, 14, 18 are filled with the values coming from the array of values following respectively and all other values are \"0.0\", i.e. (0.51, 61.9, 58.0, 5.19, 5.12, 3.19, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, ...)\n *  Refer to the one-hot encoding trasnformation above, this is very similar but we are doing this with all available fields and combining them into single one.\n */\n\n/** Show the data as a ML algorithm sees it */\nvectorAssembled\n    .select('price, 'features)\n    .show(false)",
+      "title": "[After] Vector assembling",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:177",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:49:54+0000",
+      "dateStarted": "2017-07-24T11:49:54+0000",
+      "dateUpdated": "2017-07-24T11:49:54+0000",
+      "id": "20170530-083021_649114004",
+      "jobName": "paragraph_1500891792729_1283275341",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<h3>Training &amp; Validation</h3>\n<p>It is important in machine learning to produce a model, which is able to generalise to unseen data examples. For example, we do not create a machine learning based on a set of training data examples and then evaluate the realised model on the same training data set. There are two approaches to making the evaluation of a machine learning model more trustworthy:</p>\n<ul>\n  <li>Hold-out: from all data at hand, we split into two sets of data examples with a ratio such as 80-20 or 70-30. In other words, we use 80% of the data for training a model and then evaluate the realised model on the remaining 20%.</li>\n  <li>Cross-Validation: Splitting the data into n-folds and repeatedly train a model on each (n-1) folds until all the folds are covered. The final evaluation is the combination of all the evaluations from each fold.</li>\n</ul>\n<p>In this demo, the Hold-out method is used, and the data is split 80% / 20%. In other words, 80% of the data examples will be used to learn a model to predict a diamond&rsquo;s price based on its properties. Subsequently, we validate the realised model on the remaining 20% data example which were not used in the learning process.</p>\n<h3>Evaluating realised model</h3>\n<p>In this demo notebook, we evaluate our realised model based on the following metrics:</p>\n<ul>\n  <li><strong>Root Mean Squared Error (RMSE)</strong>: The deviation of all predictions from actual price values of the diamonds in the testing set.</li>\n  <li><strong>Mean Absolute Error (MAE)</strong>: The average difference between the predictions and actual price values of the diamonds in the testing set.</li>\n</ul>\n<p>These are two very common metrics that we can use to evaluate the quality of a regression model. Depending on the type of machine learning techniques such as clustering, classification or regression, different metrics should be used for validation.</p>\n<p>Further Reading:</p>\n<p><a href=\"https://spark.apache.org/docs/latest/ml-tuning.html#train-validation-split\">https://spark.apache.org/docs/latest/ml-tuning.html#train-validation-split</a><br/><a href=\"https://spark.apache.org/docs/latest/ml-tuning.html#cross-validation\">https://spark.apache.org/docs/latest/ml-tuning.html#cross-validation</a><br/><a href=\"https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Holdout_method\">https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Holdout_method</a><br/><a href=\"https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation\">https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation</a><br/><a href=\"https://www.cs.cmu.edu/~schneide/tut5/node42.html\">https://www.cs.cmu.edu/~schneide/tut5/node42.html</a></p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md\n### Training & Validation\n\nIt is important in machine learning to produce a model, which is able to generalise to unseen data examples. For example, we do not create a machine learning based on a set of training data examples and then evaluate the realised model on the same training data set. There are two approaches to making the evaluation of a machine learning model more trustworthy:\n\n* Hold-out: from all data at hand, we split into two sets of data examples with a ratio such as 80-20 or 70-30. In other words, we use 80% of the data for training a model and then evaluate the  realised model on the remaining 20%.\n* Cross-Validation: Splitting the data into n-folds and repeatedly train a model on each (n-1) folds until all the folds are covered. The final evaluation is the combination of all the evaluations from each fold.\n\nIn this demo, the Hold-out method is used, and the data is split 80% / 20%. In other words, 80% of the data examples will be used to learn a model to predict a diamond's price based on its properties. Subsequently, we validate the realised model on the remaining 20% data example which were not used in the learning process.\n\n### Evaluating realised model\n\nIn this demo notebook, we evaluate our realised model based on the following metrics:\n\n* **Root Mean Squared Error (RMSE)**: The deviation of all predictions from actual price values of the diamonds in the testing set.\n* **Mean Absolute Error (MAE)**: The average difference between the predictions and actual price values of the diamonds in the testing set.\n\nThese are two very common metrics that we can use to evaluate the quality of a regression model. Depending on the type of machine learning techniques such as clustering, classification or regression, different metrics should be used for validation.\n\nFurther Reading:\n\n<https://spark.apache.org/docs/latest/ml-tuning.html#train-validation-split>\n<https://spark.apache.org/docs/latest/ml-tuning.html#cross-validation>\n<https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Holdout_method>\n<https://en.wikipedia.org/wiki/Cross-validation_(statistics)#k-fold_cross-validation>\n<https://www.cs.cmu.edu/~schneide/tut5/node42.html>",
+      "title": "Regression Model Learning",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:178",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:51:44+0000",
+      "dateStarted": "2017-07-24T11:51:09+0000",
+      "dateUpdated": "2017-07-24T11:51:09+0000",
+      "id": "20170529-165351_1478725223",
+      "jobName": "paragraph_1500891792729_1283275341",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\nimport org.apache.spark.ml.regression.GBTRegressor\n\n\ntrainingData: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [_c0: int, carat: double ... 16 more fields]\ntestingData: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [_c0: int, carat: double ... 16 more fields]\n\ngbt: org.apache.spark.ml.regression.GBTRegressor = gbtr_610478efae9a\n\nmodel: org.apache.spark.ml.regression.GBTRegressionModel = GBTRegressionModel (uid=gbtr_610478efae9a) with 8 trees\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\r\nimport org.apache.spark.ml.regression.GBTRegressor\r\n\r\n/** Split original data into training set and testing set.\r\n *  \"seed = 1\" to ensure the reproducibility of this demo.\r\n */\r\nval Array(trainingData, testingData) = vectorAssembled.randomSplit(Array(0.8, 0.2), seed = 1)\r\n\r\n/** Defining the model to be fitted.\r\n *  Gradien Boosted Tree (GBT) algorithm is used in this demo.\r\n */\r\n\r\nval gbt = new GBTRegressor()\r\n            .setLabelCol(\"price\")\r\n            .setFeaturesCol(\"features\")\r\n            .setMaxDepth(15)\r\n            .setMaxIter(8)\r\n\r\nval model = gbt.fit(trainingData)\r\n\r\n/** More information about Gradient-Boosted-Tree (GBT) algorithm:\r\n *  https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-tree-classifier\r\n *  https://en.wikipedia.org/wiki/Decision_tree_learning\r\n *  https://en.wikipedia.org/wiki/Gradient_boosting\r\n */",
+      "title": "Create a model from training data",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:179",
+      "apps": [],
+      "config": {
+        "colWidth": 6,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:52:10+0000",
+      "dateStarted": "2017-07-24T11:52:08+0000",
+      "dateUpdated": "2017-07-24T11:52:08+0000",
+      "id": "20170601-065808_1770624049",
+      "jobName": "paragraph_1500891792730_1284429587",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\npredictions: org.apache.spark.sql.DataFrame = [_c0: int, carat: double ... 17 more fields]\n+-----+-----------+-----+------+-----+-----+-----+------------------+------------+\n|carat|total_depth|table|length|width|depth|price|        prediction|delta in (%)|\n+-----+-----------+-----+------+-----+-----+-----+------------------+------------+\n| 0.31|       63.3| 58.0|  4.34| 4.35| 2.75|  335| 403.5349182935586|        20.0|\n|  0.3|       64.0| 55.0|  4.25| 4.28| 2.73|  339|452.50280933064766|        33.0|\n|  0.3|       63.8| 56.0|  4.23| 4.26| 2.71|  351|417.16247208951074|        19.0|\n|  0.3|       63.3| 56.0|  4.26|  4.3| 2.71|  351| 395.0368414440016|        13.0|\n| 0.31|       58.1| 62.0|  4.44| 4.47| 2.59|  353|425.92928031772124|        21.0|\n| 0.23|       60.7| 59.0|  3.97| 4.01| 2.42|  402|432.88373402678025|         8.0|\n| 0.23|       64.1| 59.0|  3.83| 3.85| 2.46|  402|464.01808395513336|        15.0|\n| 0.26|       60.8| 59.0|  4.13| 4.16| 2.52|  403|347.77815148776403|       -14.0|\n| 0.33|       61.2| 56.0|  4.49|  4.5| 2.75|  403|402.63039240557674|         0.0|\n| 0.26|       58.4| 63.0|  4.19| 4.24| 2.46|  403|374.30093543973453|        -7.0|\n| 0.25|       63.3| 60.0|   4.0| 4.03| 2.54|  404|344.50360700481184|       -15.0|\n|  0.3|       59.3| 61.0|  4.43| 4.38| 2.61|  405|466.49513978621826|        15.0|\n| 0.26|       63.4| 59.0|   4.0| 4.04| 2.55|  554| 550.4015311682961|        -1.0|\n| 0.32|       62.9| 58.0|  4.35| 4.33| 2.73|  554| 545.5973110314044|        -2.0|\n|  0.7|       59.4| 62.0|  5.71| 5.76|  3.4| 2759|2407.6115731525406|       -13.0|\n| 0.75|       59.9| 54.0|   6.0| 5.96| 3.58| 2760| 3135.757673385178|        14.0|\n| 0.75|       61.7| 58.0|  5.85| 5.79| 3.59| 2760| 2723.875121963106|        -1.0|\n| 0.75|       62.2| 55.0|  5.87|  5.8| 3.63| 2760| 2361.178107539876|       -14.0|\n| 0.74|       62.2| 59.0|  5.73| 5.82| 3.59| 2762| 2279.025450669314|       -17.0|\n| 0.71|       62.4| 54.0|  5.72| 5.76| 3.58| 2762|2460.9294877214597|       -11.0|\n+-----+-----------+-----+------+-----+-----+-----+------------------+------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\r\n/**  Predict price for diamonds in testing set from the created model */\r\nval predictions = model.transform(testingData)\r\n\r\n/** Show some sample predictions from the our model.\r\n *  The price column is not exposed to the model but it is put next to predicted values for our references as well as the difference in % between the predicted price and the actual price is also calculated.\r\n */\r\n\r\npredictions\r\n\t.select(\r\n\t\t\"carat\",\r\n\t\t\"total_depth\",\r\n\t\t\"table\",\r\n\t\t\"length\",\r\n\t\t\"width\",\r\n\t\t\"depth\",\r\n\t\t\"price\",\r\n\t\t\"prediction\")\r\n\t.withColumn(\"delta in (%)\", round(('prediction - 'price) / 'price * 100))\r\n\t.show()",
+      "title": "Sample predictions from the created model",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:180",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": false,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {
+          "language": "scala"
+        },
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {},
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:53:07+0000",
+      "dateStarted": "2017-07-24T11:53:04+0000",
+      "dateUpdated": "2017-07-24T11:53:04+0000",
+      "id": "20170530-080628_1220895608",
+      "jobName": "paragraph_1500891792730_1284429587",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\nimport org.apache.spark.ml.evaluation.RegressionEvaluator\n\nevaluator: org.apache.spark.ml.evaluation.RegressionEvaluator = regEval_547201fcf3f2\n\nrmse: Double = 851.1511015619964\n\nmae: Double = 384.6174923898695\nRoot Mean Squared Error (RMSE) on test data = 851.1511015619964\nMean Absolute Error on test data = 384.6174923898695\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%spark\r\n/** We can use built-in evaluator to quickly evaluate the goodness of the created model.\r\n *\r\n *  More information about evaluator can be found here:\r\n *  https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.evaluation.RegressionEvaluator\r\n *  https://spark.apache.org/docs/latest/ml-classification-regression.html#output-columns-predictions-1\r\n */\r\nimport org.apache.spark.ml.evaluation.RegressionEvaluator\r\n\r\n/** Define an evaluator */\r\nval evaluator = new RegressionEvaluator()\r\n      .setLabelCol(\"price\")\r\n      .setPredictionCol(\"prediction\")\r\n\r\nval rmse = evaluator.setMetricName(\"rmse\").evaluate(predictions)\r\nval mae =  evaluator.setMetricName(\"mae\").evaluate(predictions)\r\n\r\nprintln(\"Root Mean Squared Error (RMSE) on test data = \" + rmse)\r\nprintln(\"Mean Absolute Error on test data = \" + mae)",
+      "title": "Evaluate the performance of the learned model on testing data",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:181",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown"
+        },
+        "enabled": true,
+        "mapType": "GenericMap",
+        "results": [
+          {
+            "graph": {
+              "groups": [],
+              "height": 300,
+              "keys": [],
+              "map": {
+                "data": [],
+                "dataGroups": [],
+                "filters": [],
+                "tooltip": []
+              },
+              "mode": "table",
+              "optionOpen": false,
+              "scatter": {},
+              "siteMap": {
+                "tooltips": []
+              },
+              "values": []
+            }
+          }
+        ],
+        "tableHide": false,
+        "title": true
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateFinished": "2017-07-24T11:53:42+0000",
+      "dateStarted": "2017-07-24T11:53:42+0000",
+      "dateUpdated": "2017-07-24T11:53:42+0000",
+      "id": "20170529-163729_119050036",
+      "jobName": "paragraph_1500891792731_1284044839",
+      "progressUpdateIntervalMs": 500,
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<p>This notebook has demonstrated the process to create a regression model from loading data to the model evaluation. Practically, one should spend more time to understand more about the available features and tuning parameters for a chosen model. For example, for the Gradient-Boosted Trees (GBT) algorithm used in this demo, a user can specify the following parameters:</p>\n<ul>\n  <li>Parameter to set checkpoint interval (&gt;= 1) or disable checkpoint (-1).</li>\n  <li>Parameter for features column name.</li>\n  <li>Criterion used for information gain calculation.</li>\n  <li>Loss function which GBT tries to minimize.</li>\n  <li>Maximum number of bins.</li>\n  <li>Maximum depth of the tree.</li>\n  <li>Parameter for maximum number of iterations.</li>\n  <li>Minimum information gain.</li>\n  <li>Minimum number of instances each child must have after split.</li>\n  <li>Parameter for random seed.</li>\n  <li>Parameter for step size.</li>\n  <li>Fraction of the training data used for learning in each decision tree, in range [0, 1].</li>\n</ul>\n<p>A good combination of parameters could lead to a very good model but the &ldquo;magic&rdquo; parameters tend to depend on the data properties which means that there are no universal parameters that we can use on different datasets. Parameters tuning is not covered in this demo. However, we often do not have to try these parameters manually but can defining a task as a part of the machine learning pipeline to estimate the optimal parameters.</p>\n<p>Further reading:</p>\n<p><a href=\"https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline\">https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline</a></p>\n</div>",
+            "type": "HTML"
+          }
+        ]
+      },
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "FINISHED",
+      "text": "%md \nThis notebook has demonstrated the process to create a regression model from loading data to the model evaluation. Practically, one should spend more time to understand more about the available features and tuning parameters for a chosen model. For example, for the Gradient-Boosted Trees (GBT) algorithm used in this demo, a user can specify the following parameters:\n\n* Parameter to set checkpoint interval (>= 1) or disable checkpoint (-1).\n* Parameter for features column name.\n* Criterion used for information gain calculation.\n* Loss function which GBT tries to minimize.\n* Maximum number of bins.\n* Maximum depth of the tree.\n* Parameter for maximum number of iterations.\n* Minimum information gain.\n* Minimum number of instances each child must have after split.\n* Parameter for random seed.\n* Parameter for step size.\n* Fraction of the training data used for learning in each decision tree, in range [0, 1].\n\nA good combination of parameters could lead to a very good model but the \"magic\" parameters tend to depend on the data properties which means that there are no universal parameters that we can use on different datasets. Parameters tuning is not covered in this demo. However, we often do not have to try these parameters manually but can defining a task as a part of the machine learning pipeline to estimate the optimal parameters.\n\nFurther reading:\n\n<https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline>",
+      "title": "Conclusion",
+      "user": "anonymous"
+    },
+    {
+      "$$hashKey": "object:182",
+      "apps": [],
+      "config": {
+        "colWidth": 12,
+        "editorHide": true,
+        "editorMode": "ace/mode/scala",
+        "editorSetting": {},
+        "enabled": true,
+        "graph": {
+          "groups": [],
+          "height": 300,
+          "keys": [],
+          "map": {
+            "data": [],
+            "dataGroups": [],
+            "filters": [],
+            "tooltip": []
+          },
+          "mode": "table",
+          "optionOpen": false,
+          "scatter": {},
+          "siteMap": {
+            "tooltips": []
+          },
+          "values": []
+        },
+        "mapType": "GenericMap",
+        "results": {}
+      },
+      "dateCreated": "2017-07-24T10:23:12+0000",
+      "dateUpdated": "2017-07-24T10:23:12+0000",
+      "errorMessage": "",
+      "id": "20170530-150043_1001971514",
+      "jobName": "paragraph_1500891792732_1282121094",
+      "progressUpdateIntervalMs": 500,
+      "settings": {
+        "forms": {},
+        "params": {}
+      },
+      "status": "READY",
+      "text": ""
+    }
+  ]
+}
