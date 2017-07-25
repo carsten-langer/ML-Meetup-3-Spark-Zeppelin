@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
   # For Apache Zeppelin/Spark, 3 GiB seems to be the minimum.
   config.vm.provider "virtualbox" do |vb|
 	# Set the name in the VirtualBox GUI
-	vb.name = "ml-spark"
+	vb.name = "ml-spark_" + (Time.now.strftime "%Y%m%dT%H%M%S")
     # Customize the amount of memory on the VM:
     vb.memory = "3072"
   end
