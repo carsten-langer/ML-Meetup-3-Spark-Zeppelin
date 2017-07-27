@@ -64,7 +64,9 @@ Vagrant.configure("2") do |config|
 	# Set the name in the VirtualBox GUI
 	vb.name = "ml-spark_" + (Time.now.strftime "%Y%m%dT%H%M%S")
     # Customize the amount of memory on the VM:
-    vb.memory = "3072"
+    vb.memory = 3072
+	# Customize number of CPUs available inside the VM
+	vb.cpus = 2
   end
 
 
